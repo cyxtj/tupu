@@ -27,7 +27,7 @@ FolkRe算法主要负责针对某一特定人物，结合以上三个方面寻�
 <blockquote>
 <p>注：还需要从百度百科获取更多的这种属性数据</p>
 </blockquote>
-设所有我们感兴趣的这些属性集合设为<code>Atr</code>；而属性集<code>Atr</code>根据是否直接提供有关系的人，还能够分为直接属性集<code>AtrD</code>（如<code>配偶</code>，<code>儿子</code>，<code>父亲</code>，<code>母亲</code>，<code>好友</code>等）和间接属性集<code>AtrA</code>（如<code>出生日期</code>，<code>出生地</code>等）。
+设所有我们感兴趣的这些属性集合设为<code>Atr</code>；而属性集<code>Atr</code>根据是否直接提供有关系的人，还能够分为直接属性集<code>AtrD</code>（如：<code>配偶</code>，<code>儿子</code>，<code>父亲</code>，<code>母亲</code>，<code>好友</code>等）和间接属性集<code>AtrA</code>（如<code>出生日期</code>，<code>出生地</code>等）。
 ### 算法逻辑
 FolkLabel主要完成隐含关系挖掘和人工标定标签这两个功能。其中，隐含关系挖掘函数用于寻找与用户在词条中有联系的用户（简称为TopC人物，下文亦如此）；而人工标定标签函数则用来对TopN人物和TopC人物进行关系的确定。
 
@@ -50,7 +50,7 @@ FolkLabel主要完成隐含关系挖掘和人工标定标签这两个功能。�
 结合以上二者，用于确定人物i与TopN人物关系标签的算法即为FolkLabel算法。FolkLabel算法主要负责标签标签数据的搜集、汇总和整理。在确定好人物i、TopN人物以及关系标签后，组织为固定的数据格式：
 <code>人物一, 人物二, 关系</code>，即 <code>i, TopN(i,j), Re(i,j)</code>
 <blockquote>
-<p>注：之所以把寻找隐含关系和关系标签的确定设计为同一个函数，是因为</p>
+<p>注：之所以把寻找隐含关系和关系标签的确定设计为同一个函数，是因为隐含关系和用户的相关性是比较独立的，如果关联性用FolkRe算法确定的话会造成混乱；另一方面，这样设计对于百科中有关系记录的人物，避免了人物关系标签的重复计算，在保持TopN人物和TopC人物独立分开的情况下，能更快的返回“用户-关系”对</p>
 </blockquote>
 
 ##3 需要数据
